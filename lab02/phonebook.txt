@@ -1,0 +1,7 @@
+
+Bjarne Stroustrup +44445a44
+James Gosling  +24451114
+Brian KerNigHan   +9333334343 
+Dennis RItchie    +dddd
+Guido Van-Rossum   +44545454
+John McCarthy      +1958
