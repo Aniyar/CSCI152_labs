@@ -1,0 +1,8 @@
+
+   //  8 + ( 6 - 1 ) * 7 / 6 
+   // What is its RPN representation?
+
+   8 6 1 - 7 * 6 / +   =
+
+
+
