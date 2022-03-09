@@ -35,18 +35,28 @@ inline std::ostream& operator << ( std::ostream& out, const rpn_error& e )
 double apply0( inputtype op )
 {
    std::cout << "applying " << op << "\n";
-
+   switch (op){
+      case inp_pi : return M_PI;
+      case inp_e : return M_E;
+   }
    // Your code comes here.
 
    throw std::logic_error( "unknown 0-ary operator" );
 }
 
 // Apply an operator with one argument:
-
 double apply1( inputtype op, double d1 )
 {
    std::cout << "applying " << op << " on " << d1 << "\n";
-
+   switch (op){
+      case inp_exp : return exp(d1);
+      case inp_sqrt : return sqrt(d1);
+      case inp_log : return log(d1);
+      case inp_sin : return sin(d1);
+      case inp_cos : return cos(d1);
+      case inp_tan : return tan(d1);
+      case inp_abs : return abs(d1);
+   }
    // Your code comes here.
    
    throw std::logic_error( "unknown unary operator" ); 
@@ -57,7 +67,14 @@ double apply1( inputtype op, double d1 )
 double apply2( inputtype op, double d1, double d2 )
 {
    std::cout << "applying " << op << " on " << d1 << " and " << d2 << "\n";
-
+   switch(op){
+      case inp_plus : return d1+d2;
+      case inp_minus : return d1-d2;
+      case inp_times : return d1*d2;
+      case inp_div : return d1/d2;
+      case inp_mod : return d1 - static_cast<long int> (( d1 / d2 )) * d2;
+      case inp_pow : return pow(d1, d2);
+   }
    // Your code comes here.
 
    throw std::logic_error( "unknown binary operator" ); 
