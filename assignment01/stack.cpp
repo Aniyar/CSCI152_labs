@@ -28,17 +28,17 @@ void stack::ensure_capacity( size_t c ){
    // Keep current_capacity always in powers of two.
 
 stack::stack( ) :
-   data(new double[4]),
-   current_capacity(4),
    current_size(0)
+   current_capacity(4),
+   data(new double[4]),
    {
    }
    // Constructs empty stack. 
 
 stack::stack( const stack& s ) :
-   data(new double[s.current_capacity]),
-   current_capacity(s.current_capacity),
    current_size(s.current_size)
+   current_capacity(s.current_capacity),
+   data(new double[s.current_capacity]),   
 {
    ensure_capacity(s.current_size);
    std::copy(s.data, s.data+s.current_size, data);
@@ -46,9 +46,9 @@ stack::stack( const stack& s ) :
    // use std::copy
 
 stack::stack( std::initializer_list< double > init ) :
-   data(new double[init.size()]),
-   current_capacity(init.size()),
    current_size(0)
+   current_capacity(init.size()),
+   data(new double[init.size()]),
 {
    for (double elem : init){
       push(elem);
@@ -65,8 +65,8 @@ const stack& stack::operator = ( const stack& s )
    // use ensure_capacity and std::copy. 
 
 stack::~stack( ){
-   current_capacity = 0;
    current_size = 0;
+   current_capacity = 0;
    delete [] data;
 }
 
