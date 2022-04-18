@@ -15,7 +15,6 @@
         "cwchar": "cpp",
         "cwctype": "cpp",
         "deque": "cpp",
-        "list": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
         "exception": "cpp",
@@ -44,12 +43,6 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp",
-        "chrono": "cpp",
-        "ctime": "cpp",
-        "map": "cpp",
-        "ratio": "cpp",
-        "iomanip": "cpp",
-        "thread": "cpp"
+        "typeinfo": "cpp"
     }
 }

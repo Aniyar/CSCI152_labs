@@ -9,36 +9,39 @@ size_t pow(int e, int p){
    return res;
 }
 
-void stack::ensure_capacity( size_t c ){
-   if (c <= current_capacity){
+void stack::ensure_capacity(size_t c)
+{
+   if (c <= current_capacity)
+   {
       return;
    }
    int p = 1;
-   while (pow(2, p) < c){
-      p++;
+   while (p < c)
+   {
+      p *= 2;
    }
-   current_capacity = pow(2, p);
-   //std::cout << current_capacity << "\n";
-   double* new_arr;
+   current_capacity = p;
+   // std::cout << current_capacity << "\n";
+   double *new_arr;
    new_arr = new double[current_capacity];
-   std::copy(data, data+current_size, new_arr);
+   std::copy(data, data + current_size, new_arr);
    data = new_arr;
    return;
 }
    // Keep current_capacity always in powers of two.
 
 stack::stack( ) :
-   current_size(0)
+   current_size(0),
    current_capacity(4),
-   data(new double[4]),
+   data(new double[4])
    {
    }
    // Constructs empty stack. 
 
 stack::stack( const stack& s ) :
-   current_size(s.current_size)
+   current_size(s.current_size),
    current_capacity(s.current_capacity),
-   data(new double[s.current_capacity]),   
+   data(new double[s.current_capacity])   
 {
    ensure_capacity(s.current_size);
    std::copy(s.data, s.data+s.current_size, data);
@@ -46,9 +49,9 @@ stack::stack( const stack& s ) :
    // use std::copy
 
 stack::stack( std::initializer_list< double > init ) :
-   current_size(0)
+   current_size(0),
    current_capacity(init.size()),
-   data(new double[init.size()]),
+   data(new double[init.size()])
 {
    for (double elem : init){
       push(elem);

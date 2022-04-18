@@ -7,7 +7,7 @@ CPP = g++
 
 
 main : Makefile   queue.o main.o 
-	$(CPP) $(Flags) -o main   queue.o main.o 
+	$(CPP) $(Flags) -o main   queue.o main.o
 
 queue.o : Makefile   queue.cpp   queue.h 
 	$(CPP) -c $(Flags) queue.cpp -o  queue.o

@@ -10,15 +10,11 @@ queue::queue() : queue_size(0),
 queue::queue(const queue &q) : queue_size(q.queue_size),
                                front(nullptr), back(nullptr)
 {
-    if (q.front->next)
+    node *temp = q.front;
+    while (temp)
     {
-        node *temp = q.front;
-        while (temp)
-        {
-            push(temp->value);
-            temp = temp->next;
-        }
-        back = temp;
+        push(temp->value);
+        temp = temp->next;
     }
 }
 
@@ -34,7 +30,7 @@ const queue &queue::operator=(const queue &q)
         {
             push(temp->value);
             temp = temp->next;
-            //std::cout <<"here\n";
+            // std::cout <<"here\n";
         }
         back = temp;
     }
@@ -49,7 +45,7 @@ queue::~queue()
 queue::queue(std::initializer_list<std::string> init) : queue_size(0),
                                                         front(nullptr), back(nullptr)
 {
-    for (int i = 0; i < init.size(); i++)
+    for (size_t i = 0; i < init.size(); i++)
     {
         push(init.begin()[i]);
     }
@@ -90,7 +86,20 @@ void queue::clear()
     queue_size = 0;
 }
 
-// void queue::reset( size_t s );
+void queue::reset(size_t s)
+{
+    if (s > queue_size)
+    {
+        throw std::length_error("the queue cannot be trimmed to s");
+    }
+    else
+    {
+        while (queue_size > s)
+        {
+            pop();
+        }
+    }
+}
 
 const std::string &queue::peek() const
 {
